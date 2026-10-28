@@ -41,8 +41,8 @@ var languages = new Language[]
     new("LV", "lv-LV", "Latviešu"), new("MT", "mt-MT", "Malti"), new("PL", "pl-PL", "Polski"),
     new("PT", "pt-PT", "Português"), new("RO", "ro-RO", "Română"), new("SK", "sk-SK", "Slovenčina"),
     new("SL", "sl-SI", "Slovenščina"), new("SV", "sv-SE", "Svenska"), new("UK", "uk-UA", "Українська"),
-    new("ZH", "zh-CN", "中文")
-};
+    new("ZH", "zh-CN", "中文"), new("AR", "ar-SA", "العربية")
+}; 
 
 var options = string.Join("\n", languages.Select(l =>
     $"<option value=\"{l.Code}\" lang=\"{l.Code.ToLowerInvariant()}\">{WebUtility.HtmlEncode(l.Name)} ({l.Code})</option>"));
@@ -158,7 +158,7 @@ app.MapPost("/api/translate", async (TranslateRequest body) =>
                 filename = Path.GetFileNameWithoutExtension(inputFile)
             }
         },
-        sourceLanguage = "NL",
+        sourceLanguage = "EN",
         targetLanguages = new[] { lang.Code },
         domain = "GEN",
         notifications = new

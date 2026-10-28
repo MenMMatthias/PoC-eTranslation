@@ -1,0 +1,11 @@
+@PoC_eTranslation.Api_HostAddress = http://localhost:5157
+
+GET {{PoC_eTranslation.Api_HostAddress}}/openapi/v1.json
+Accept: application/json
+
+###
+
+GET {{PoC_eTranslation.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,9 @@
+﻿# Visual Studio tijdelijke bestanden
+/.vs/
+
+# .NET buildbestanden
+/bin/
+/obj/
+
+# Lokale gebruikersinstellingen
+*.csproj.user

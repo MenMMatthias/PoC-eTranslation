@@ -1,0 +1,799 @@
+{
+ "project": {
+  "projectTitle": {
+   "nl-NL": "Zelfinspectietool productveiligheid (GPSR) – minimale testboom",
+   "en-GB": "Product Safety Self-Inspection Tool (GPSR) – minimal test tree"
+  },
+  "version": "2.3",
+  "adviceTitle": {
+   "nl-NL": "Aandachtspunten",
+   "en-GB": "Points of attention"
+  },
+  "adviceSubTitle": {
+   "nl-NL": "Op basis van uw antwoorden ziet u hieronder mogelijke aandachtspunten voor productveiligheid. De vragen in deze tool zijn gebaseerd op wettelijke verplichtingen uit de Europese productveiligheidsverordening (GPSR). Wanneer u een vraag met “nee” beantwoordt, kan dit betekenen dat uw organisatie mogelijk nog niet volledig voldoet aan deze verplichtingen.",
+   "en-GB": "Based on your answers, the possible points of attention for product safety are shown below. The questions in this tool are based on the legal obligations set out in the European General Product Safety Regulation (GPSR). If you answer a question with “no”, this may mean that your organisation does not yet fully comply with these obligations."
+  },
+  "startNodeId": "5e011073-ad18-4a5d-959b-736168b86ac2",
+  "firstAdviceOpen": false,
+  "labels": {
+   "loading": {
+    "nl-NL": "Laden...",
+    "en-GB": "Loading..."
+   },
+   "nextStepButton": {
+    "proceed": {
+     "nl-NL": "Ga verder",
+     "en-GB": "Continue"
+    },
+    "showResult": {
+     "nl-NL": "Toon resultaat",
+     "en-GB": "View result"
+    },
+    "change": {
+     "nl-NL": "Wijzig",
+     "en-GB": "Edit"
+    }
+   },
+   "restartButton": {
+    "restart": {
+     "nl-NL": "Opnieuw beginnen",
+     "en-GB": "Start again"
+    }
+   },
+   "helpText": {
+    "showHelpText": {
+     "nl-NL": "Toon uitleg",
+     "en-GB": "Help"
+    },
+    "hideHelpText": {
+     "nl-NL": "Verberg uitleg",
+     "en-GB": "Hide"
+    }
+   },
+   "downloadButton": {
+    "download": {
+     "nl-NL": "Download",
+     "en-GB": "Download"
+    }
+   },
+   "advice": {
+    "showMore": {
+     "nl-NL": "Toon meer",
+     "en-GB": "View"
+    },
+    "showLess": {
+     "nl-NL": "Toon minder",
+     "en-GB": "Hide"
+    }
+   },
+   "inputNode": {
+    "placeholder": {
+     "minimalLabel": {
+      "nl-NL": "minimaal %s",
+      "en-GB": "minimum %s"
+     },
+     "maximalLabel": {
+      "nl-NL": "maximaal %s",
+      "en-GB": "maximum %s"
+     }
+    },
+    "errors": {
+     "enterValidNumber": {
+      "nl-NL": "Voer een geldig getal in.",
+      "en-GB": "Enter a valid number."
+     },
+     "valueTooLow": {
+      "nl-NL": "Het getal moet minimaal %s zijn.",
+      "en-GB": "The number must be at least %s."
+     },
+     "valueTooHigh": {
+      "nl-NL": "Het getal mag maximaal %s zijn.",
+      "en-GB": "The number must be at most %s."
+     }
+    }
+   },
+   "selectBox": {
+    "placeholder": {
+     "nl-NL": "kies ...",
+     "en-GB": "Select ..."
+    },
+    "noOptionsText": {
+     "nl-NL": "Geen opties gevonden",
+     "en-GB": "No options found"
+    }
+   },
+   "errorMessage": {
+    "title": {
+     "nl-NL": "Fout",
+     "en-GB": "Error"
+    },
+    "firstMessageMissing": {
+     "nl-NL": "Er is iets fout gegaan bij het laden van de eerste vraag.",
+     "en-GB": "Something went wrong loading the first question."
+    },
+    "dataLoadingError": {
+     "nl-NL": "Er is iets fout gegaan bij het laden van de data.",
+     "en-GB": "Something went wrong loading the data."
+    },
+    "topicNotFound": {
+     "nl-NL": "De gekozen rol bestaat niet.",
+     "en-GB": "The requested topic does not exist."
+    }
+   },
+   "errorBoundary": {
+    "unknownError": {
+     "nl-NL": "Er is een onbekende fout opgetreden.",
+     "en-GB": "An unknown error occurred."
+    },
+    "heading": {
+     "nl-NL": "Oeps! Er is iets misgegaan.",
+     "en-GB": "Oops! Something went wrong."
+    },
+    "description": {
+     "nl-NL": "Onze excuses voor het ongemak. Probeer de pagina te verversen.",
+     "en-GB": "We apologize for the inconvenience. Try refreshing the page."
+    }
+   },
+   "fullscreenModal": {
+    "closeLabel": {
+     "nl-NL": "Sluiten",
+     "en-GB": "Close"
+    }
+   },
+   "questionCard": {
+    "backButton": {
+     "nl-NL": "Terug",
+     "en-GB": "Back"
+    }
+   },
+   "topicDetail": {
+    "backToOverview": {
+     "nl-NL": "Terug naar overzicht",
+     "en-GB": "Back to overview"
+    }
+   },
+   "results": {
+    "backButton": {
+     "label": {
+      "nl-NL": "Alle rollen",
+      "en-GB": "All topics"
+     },
+     "title": {
+      "nl-NL": "Ga terug naar het overzicht van alle rollen",
+      "en-GB": "Back to topic overview"
+     }
+    },
+    "startOverButton": {
+     "nl-NL": "Rol opnieuw",
+     "en-GB": "Restart topic"
+    },
+    "backToTopics": {
+     "nl-NL": "Alle rollen",
+     "en-GB": "All topics"
+    },
+    "confirmRestartDialog": {
+     "title": {
+      "nl-NL": "Rol opnieuw beginnen?",
+      "en-GB": "Restart topic?"
+     },
+     "text": {
+      "nl-NL": "Als je opnieuw begint, verlies je je huidige voortgang voor deze rol.",
+      "en-GB": "If you restart, you will lose your current progress for this topic."
+     },
+     "confirmText": {
+      "nl-NL": "Opnieuw beginnen",
+      "en-GB": "Restart"
+     },
+     "cancelText": {
+      "nl-NL": "Annuleren",
+      "en-GB": "Cancel"
+     }
+    },
+    "adviceMode": {
+     "noResults": {
+      "nl-NL": "Op basis van je antwoorden zijn er geen adviezen voor deze rol.",
+      "en-GB": "No advice was found based on your answers."
+     },
+     "oneResult": {
+      "nl-NL": "Op basis van je antwoorden is er 1 advies voor deze rol.",
+      "en-GB": "One advice was found based on your answers."
+     },
+     "multipleResults": {
+      "nl-NL": "Op basis van je antwoorden zijn er %s adviezen voor deze rol.",
+      "en-GB": "%s advice were found based on your answers."
+     }
+    },
+    "adviceBadge": {
+     "one": {
+      "nl-NL": "advies",
+      "en-GB": "advice"
+     },
+     "multiple": {
+      "nl-NL": "adviezen",
+      "en-GB": "advice"
+     }
+    },
+    "print": {
+     "answersTitle": {
+      "nl-NL": "Ingevulde antwoorden",
+      "en-GB": "Answers"
+     },
+     "printedOnPrefix": {
+      "nl-NL": "Geprint op",
+      "en-GB": "Printed on"
+     }
+    },
+    "backToAnswers": {
+     "title": {
+      "nl-NL": "Uw antwoorden",
+      "en-GB": "Your answers"
+     },
+     "subtitleOneAnswer": {
+      "nl-NL": "1 vraag beantwoord",
+      "en-GB": "1 question answered"
+     },
+     "subtitleMultipleAnswers": {
+      "nl-NL": "%s vragen beantwoord",
+      "en-GB": "%s questions answered"
+     },
+     "linkText": {
+      "nl-NL": "Aanpassen",
+      "en-GB": "Edit"
+     },
+     "ariaLabel": {
+      "nl-NL": "Antwoorden aanpassen of bekijken",
+      "en-GB": "Edit or view your answers"
+     }
+    }
+   },
+   "topicsProgress": {
+    "initial": {
+     "title": {
+      "nl-NL": "Start de zelfinspectie",
+      "en-GB": "Start the self-scan"
+     },
+     "text": {
+      "nl-NL": "De zelfinspectie bestaat uit %totalTopics rollen. Beantwoord de vragen en krijg een advies op maat voor uw organisatie.",
+      "en-GB": "The scan consists of %totalTopics parts. Answer questions and receive tailored advice for your organisation."
+     },
+     "button": {
+      "nl-NL": "Start met rol %currentTopicNumber",
+      "en-GB": "Start with part %currentTopicNumber"
+     }
+    },
+    "inProgress": {
+     "title": {
+      "nl-NL": "Uw voortgang",
+      "en-GB": "Your progress"
+     },
+     "text": {
+      "nl-NL": "U heeft %finishedTopicsLabel van de %totalTopics rollen afgerond. U kunt verder met rol %currentTopicNumber.",
+      "en-GB": "You have completed %finishedTopicsLabel of the %totalTopics parts. You can continue with part %currentTopicNumber."
+     },
+     "noneFinishedLabel": {
+      "nl-NL": "nog geen",
+      "en-GB": "none yet"
+     },
+     "button": {
+      "nl-NL": "Verder met rol %currentTopicNumber",
+      "en-GB": "Continue with part %currentTopicNumber"
+     }
+    },
+    "completed": {
+     "title": {
+      "nl-NL": "Uw zelfinspectie is afgerond",
+      "en-GB": "Your self-inspection is complete"
+     },
+     "text": {
+      "nl-NL": "Bekijk uw resultaten. U kunt een overzicht van alle adviezen downloaden of printen.",
+      "en-GB": "View your results. You can download or print an overview of all advice."
+     },
+     "button": {
+      "nl-NL": "Resultaten bekijken",
+      "en-GB": "View results"
+     }
+    }
+   },
+   "breadcrumbsAriaLabel": {
+    "nl-NL": "Kruimelpad",
+    "en-GB": "Breadcrumbs"
+   },
+   "topicCard": {
+    "status": {
+     "initial": {
+      "nl-NL": "Nog niet gestart",
+      "en-GB": "Not started"
+     },
+     "inProgress": {
+      "nl-NL": "Bezig",
+      "en-GB": "In progress"
+     },
+     "completed": {
+      "nl-NL": "Afgerond",
+      "en-GB": "Completed"
+     }
+    },
+    "description": {
+     "initial": {
+      "singular": {
+       "nl-NL": "1 vraag",
+       "en-GB": "1 question"
+      },
+      "plural": {
+       "nl-NL": "%s vragen",
+       "en-GB": "%s questions"
+      }
+     },
+     "inProgress": {
+      "singular": {
+       "nl-NL": "nog 1 vraag",
+       "en-GB": "1 question remaining"
+      },
+      "plural": {
+       "nl-NL": "nog %s vragen",
+       "en-GB": "%s questions remaining"
+      }
+     },
+     "completed": {
+      "singular": {
+       "nl-NL": "1 advies",
+       "en-GB": "1 advice"
+      },
+      "plural": {
+       "nl-NL": "%s adviezen",
+       "en-GB": "%s pieces of advice"
+      }
+     }
+    }
+   }
+  },
+  "showFlowPath": false,
+  "introductionTitle": {
+   "nl-NL": "Start de zelfinspectie",
+   "en-GB": "Start the self-inspection"
+  },
+  "introductionSubtitle": {
+   "nl-NL": "",
+   "en-GB": ""
+  },
+  "introductionDescription": {
+   "nl-NL": "<p>Een bedrijf kan meerdere rollen hebben. U kunt bijvoorbeeld producten zelf maken (fabrikant), producten van buiten de EU invoeren (importeur), producten doorverkopen (distributeur) of producten opslaan en verzenden voor anderen (fulfilmentdienstverlener). Doorloop de vragen voor elke rol die op uw situatie van toepassing is.</p>",
+   "en-GB": "<p>A company can have several roles. For example, you may manufacture products yourself (manufacturer), import products from outside the EU (importer), resell products (distributor), or store and ship products for others (fulfilment service provider). Go through the questions for each role that applies to your situation.</p>"
+  },
+  "baseLanguage": "nl-NL",
+  "extraLanguages": [
+   "en-GB"
+  ],
+  "autoSaveProgress": false,
+  "dataModelVersion": 6
+ },
+ "questions": {
+  "questions": [
+   {
+    "id": "5c901b0b-dda0-4595-a779-eed6b12c8340",
+    "createdAt": "2026-03-10T11:00:28.618Z",
+    "lastModified": "2026-03-10T11:00:28.618Z",
+    "code": "ALLE_ROLLEN_0.1_KLACHTEN_SYSTEEM",
+    "tags": [],
+    "question": {
+     "nl-NL": "Heeft u een werkwijze om klachten en signalen over productveiligheid te registreren en op te volgen?",
+     "en-GB": "Do you have a procedure for recording and following up complaints and signals about product safety?"
+    },
+    "remark": {
+     "nl-NL": "<p>U moet klachten en signalen over mogelijke veiligheidsrisico’s vastleggen en opvolgen. Zo kunt u tijdig risico’s herkennen en maatregelen nemen.&nbsp;<br><br>Een eenvoudig overzicht kan voldoende zijn. Naarmate uw assortiment groter of complexer is, kan een uitgebreider systeem nodig zijn. Afhankelijk van de grootte of complexiteit van uw assortiment kan een klachtensysteem eenvoudig of uitgebreider zijn.</p>",
+     "en-GB": "<p>You must record and follow up complaints and signals about possible safety risks. This helps you identify risks in time and take action. A simple overview may be sufficient. If your product range is larger or more complex, you may need a more extensive system.</p>"
+    },
+    "remarkCollapsed": false,
+    "topicId": "initial-topic-id",
+    "answers": [
+     {
+      "id": "ad48cb30-5d77-464e-bc00-304411bb5777",
+      "createdAt": "2026-03-10T11:45:54.110Z",
+      "lastModified": "2026-03-10T11:45:54.110Z",
+      "code": "JA",
+      "variables": {},
+      "chosenAnswer": {
+       "nl-NL": "U heeft een werkwijze om klachten en signalen over productveiligheid te registreren en op te volgen.",
+       "en-GB": "You have a procedure for recording and following up complaints and signals about product safety."
+      },
+      "answer": {
+       "nl-NL": "Ja",
+       "en-GB": "Yes"
+      },
+      "remark": {
+       "nl-NL": "",
+       "en-GB": ""
+      },
+      "kind": "single"
+     },
+     {
+      "id": "3df452be-4911-425d-ac29-799ce78d5a55",
+      "createdAt": "2026-03-10T11:46:00.633Z",
+      "lastModified": "2026-03-10T11:46:00.633Z",
+      "code": "NEE",
+      "variables": {},
+      "chosenAnswer": {
+       "nl-NL": "U heeft geen vaste werkwijze om klachten en signalen over productveiligheid vast te leggen en op te volgen.",
+       "en-GB": "You do not have a set procedure for recording and following up complaints and signals about product safety."
+      },
+      "answer": {
+       "nl-NL": "Nee",
+       "en-GB": "No"
+      },
+      "remark": {
+       "nl-NL": "",
+       "en-GB": ""
+      },
+      "kind": "single"
+     }
+    ],
+    "kind": "radio"
+   },
+   {
+    "id": "7a1a4cf7-c7ca-4c43-b232-9ff822eabfe0",
+    "createdAt": "2026-03-10T11:02:13.862Z",
+    "lastModified": "2026-03-10T11:02:13.862Z",
+    "code": "ALLE_ROLLEN_0.2_KLACHTEN_ONDERZOEK",
+    "tags": [],
+    "question": {
+     "nl-NL": "Onderzoekt u klachten en signalen die kunnen wijzen op een veiligheidsrisico?",
+     "en-GB": "Do you investigate complaints and signals that may indicate a safety risk?"
+    },
+    "remark": {
+     "nl-NL": "<p>U moet klachten die mogelijk verband houden met productveiligheid beoordelen.</p><p>Niet elke klacht is een veiligheidsklacht, maar signalen over bijvoorbeeld letsel, defecten of gevaarlijk gebruik moet u onderzoeken.</p><p>Zo kunt u tijdig passende maatregelen nemen.</p>",
+     "en-GB": "<p>You must assess complaints that may be related to product safety.&nbsp;</p><p>Not every complaint is a safety complaint, but you must investigate signals about, for example, injury, defects or dangerous use.</p><p>This helps you take appropriate action in time.</p>"
+    },
+    "remarkCollapsed": false,
+    "topicId": "initial-topic-id",
+    "answers": [
+     {
+      "id": "14757751-3446-47b8-8657-c44ae0552494",
+      "createdAt": "2026-03-10T11:49:14.853Z",
+      "lastModified": "2026-03-10T11:49:14.853Z",
+      "code": "JA",
+      "variables": {},
+      "chosenAnswer": {
+       "nl-NL": "U onderzoekt klachten en signalen die kunnen wijzen op een veiligheidsrisico.",
+       "en-GB": "You investigate complaints and signals that may indicate a safety risk."
+      },
+      "answer": {
+       "nl-NL": "Ja",
+       "en-GB": "Yes"
+      },
+      "remark": {
+       "nl-NL": "",
+       "en-GB": ""
+      },
+      "kind": "single"
+     },
+     {
+      "id": "f9dd6097-d4ad-4270-8a62-61d57279214b",
+      "createdAt": "2026-03-10T11:49:21.173Z",
+      "lastModified": "2026-03-10T11:49:21.173Z",
+      "code": "NEE",
+      "variables": {},
+      "chosenAnswer": {
+       "nl-NL": "U beoordeelt klachten en signalen niet op mogelijke veiligheidsrisico’s of doet hier geen onderzoek naar.",
+       "en-GB": "You do not assess complaints and signals for possible safety risks or investigate them."
+      },
+      "answer": {
+       "nl-NL": "Nee",
+       "en-GB": "No"
+      },
+      "remark": {
+       "nl-NL": "",
+       "en-GB": ""
+      },
+      "kind": "single"
+     }
+    ],
+    "kind": "radio"
+   }
+  ]
+ },
+ "advices": {
+  "advices": [
+   {
+    "id": "8013ad21-c7e2-4f50-9be3-b60d2a06a3d5",
+    "topicId": "initial-topic-id",
+    "createdAt": "2026-03-10T12:45:08.908Z",
+    "lastModified": "2026-03-10T12:45:08.908Z",
+    "code": "ALLE_ROLLEN_0.1_KLACHTEN_SYSTEEM_ADV",
+    "title": {
+     "nl-NL": "Klachten en meldingen: werkwijze inrichten",
+     "en-GB": "Complaints and reports: set up a procedure"
+    },
+    "hideTitle": false,
+    "subtitle": {
+     "nl-NL": "U heeft geen vaste werkwijze om klachten en signalen over productveiligheid vast te leggen en op te volgen.",
+     "en-GB": "You do not have a set procedure for recording and following up complaints and signals about product safety."
+    },
+    "adviceText": {
+     "nl-NL": "",
+     "en-GB": ""
+    },
+    "checklistItems": [
+     {
+      "id": "b9e032ca-e35c-4b58-88e4-8535a6901d9c",
+      "createdAt": "2026-08-20T06:47:52.941Z",
+      "lastModified": "2026-08-20T06:47:52.941Z",
+      "title": {
+       "nl-NL": "Zorg voor een vaste werkwijze om klachten en signalen over productveiligheid vast te leggen en op te volgen.",
+       "en-GB": "Set up a procedure for recording and following up complaints and signals about product safety."
+      },
+      "text": {
+       "nl-NL": "",
+       "en-GB": ""
+      }
+     },
+     {
+      "id": "2d1cc192-b355-427c-bdd3-1ee5c5af3bd3",
+      "createdAt": "2026-03-10T12:49:28.107Z",
+      "lastModified": "2026-03-10T12:49:28.107Z",
+      "title": {
+       "nl-NL": "Leg vast welke klachten en signalen u ontvangt",
+       "en-GB": "Keep a record of the complaints and signals you receive."
+      },
+      "text": {
+       "nl-NL": "",
+       "en-GB": ""
+      }
+     },
+     {
+      "id": "fde9aed2-88bf-4d01-8bc0-3e1e2f20ea84",
+      "createdAt": "2026-03-10T12:49:36.428Z",
+      "lastModified": "2026-03-10T12:49:36.428Z",
+      "title": {
+       "nl-NL": "Bepaal wie verantwoordelijk is voor de opvolging",
+       "en-GB": "Decide who is responsible for following them up."
+      },
+      "text": {
+       "nl-NL": "",
+       "en-GB": ""
+      }
+     }
+    ]
+   },
+   {
+    "id": "62f5872c-73ad-4b5e-a655-3db353f97867",
+    "topicId": "initial-topic-id",
+    "createdAt": "2026-03-10T12:49:54.508Z",
+    "lastModified": "2026-03-10T12:49:54.508Z",
+    "code": "ALLE_ROLLEN_0.2_KLACHTEN_ONDERZOEK_ADV",
+    "title": {
+     "nl-NL": "Klachten en meldingen: veiligheidsklachten onderzoeken",
+     "en-GB": "Complaints and reports: investigate safety complaints"
+    },
+    "hideTitle": false,
+    "subtitle": {
+     "nl-NL": "U beoordeelt klachten en signalen niet op mogelijke veiligheidsrisico’s of doet hier geen onderzoek naar.",
+     "en-GB": "You do not assess complaints and signals for possible safety risks or investigate them."
+    },
+    "adviceText": {
+     "nl-NL": "",
+     "en-GB": ""
+    },
+    "checklistItems": [
+     {
+      "id": "ae7cb94f-98cc-42ad-8f24-8c8d0883ead1",
+      "createdAt": "2026-08-18T09:50:05.873Z",
+      "lastModified": "2026-08-18T09:50:05.873Z",
+      "title": {
+       "nl-NL": "Onderzoek de oorzaak van de klacht",
+       "en-GB": "Investigate the cause of the complaint."
+      },
+      "text": {
+       "nl-NL": "",
+       "en-GB": ""
+      }
+     },
+     {
+      "id": "4cfa3a9f-d2e6-48af-9383-8d008125597b",
+      "createdAt": "2026-03-10T12:50:47.483Z",
+      "lastModified": "2026-03-10T12:50:47.483Z",
+      "title": {
+       "nl-NL": "Beoordeel of er sprake is van een veiligheidsrisico",
+       "en-GB": "Assess whether there is a safety risk."
+      },
+      "text": {
+       "nl-NL": "",
+       "en-GB": ""
+      }
+     },
+     {
+      "id": "010ccb39-d5d4-4e38-8ed5-b3dd739c8529",
+      "createdAt": "2026-03-10T12:50:48.419Z",
+      "lastModified": "2026-03-10T12:50:48.419Z",
+      "title": {
+       "nl-NL": "Neem passende maatregelen, indien nodig",
+       "en-GB": "Take appropriate action if necessary."
+      },
+      "text": {
+       "nl-NL": "",
+       "en-GB": ""
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "flowNodes": {
+  "flowNodes": [
+   {
+    "id": "5e011073-ad18-4a5d-959b-736168b86ac2",
+    "topicId": "initial-topic-id",
+    "subtopicId": "61cc6844-68c9-4a79-8a63-ab341aeb81d4",
+    "createdAt": "2026-03-10T20:41:29.971Z",
+    "lastModified": "2026-03-10T20:41:29.971Z",
+    "position": {
+     "x": 1245,
+     "y": -1710
+    },
+    "documentation": "",
+    "kind": "question",
+    "questionId": "5c901b0b-dda0-4595-a779-eed6b12c8340",
+    "answerNodeIds": [
+     "7b722a2d-ef6b-431b-9bba-2fc3da2f1242",
+     "e8a5a01a-d43e-4b4f-ae0f-d56605e83c06"
+    ]
+   },
+   {
+    "id": "7b722a2d-ef6b-431b-9bba-2fc3da2f1242",
+    "topicId": "initial-topic-id",
+    "createdAt": "2026-03-10T20:41:29.971Z",
+    "lastModified": "2026-03-10T20:41:29.971Z",
+    "position": {
+     "x": 1080,
+     "y": -1545
+    },
+    "variables": {},
+    "expressions": [],
+    "kind": "answer",
+    "answerId": "ad48cb30-5d77-464e-bc00-304411bb5777",
+    "questionId": "5c901b0b-dda0-4595-a779-eed6b12c8340",
+    "nextNodeId": "46f11894-6913-4e6a-b0b2-153c21347062",
+    "adviceIds": [],
+    "checklistItemIds": [],
+    "isEndPoint": false,
+    "score": null
+   },
+   {
+    "id": "e8a5a01a-d43e-4b4f-ae0f-d56605e83c06",
+    "topicId": "initial-topic-id",
+    "createdAt": "2026-03-10T20:41:29.971Z",
+    "lastModified": "2026-03-10T20:41:29.971Z",
+    "position": {
+     "x": 1380,
+     "y": -1545
+    },
+    "variables": {},
+    "expressions": [],
+    "kind": "answer",
+    "answerId": "3df452be-4911-425d-ac29-799ce78d5a55",
+    "questionId": "5c901b0b-dda0-4595-a779-eed6b12c8340",
+    "nextNodeId": "46f11894-6913-4e6a-b0b2-153c21347062",
+    "adviceIds": [
+     "8013ad21-c7e2-4f50-9be3-b60d2a06a3d5"
+    ],
+    "checklistItemIds": [],
+    "isEndPoint": false,
+    "score": null
+   },
+   {
+    "id": "46f11894-6913-4e6a-b0b2-153c21347062",
+    "topicId": "initial-topic-id",
+    "subtopicId": "61cc6844-68c9-4a79-8a63-ab341aeb81d4",
+    "createdAt": "2026-03-10T20:49:39.539Z",
+    "lastModified": "2026-03-10T20:49:39.539Z",
+    "position": {
+     "x": 1230,
+     "y": -1260
+    },
+    "documentation": "",
+    "kind": "question",
+    "questionId": "7a1a4cf7-c7ca-4c43-b232-9ff822eabfe0",
+    "answerNodeIds": [
+     "5602da7e-69c3-4814-9907-9c30df10a5d6",
+     "89c2f05c-3ee4-41ba-be3b-efdba8e9f33e"
+    ]
+   },
+   {
+    "id": "5602da7e-69c3-4814-9907-9c30df10a5d6",
+    "topicId": "initial-topic-id",
+    "createdAt": "2026-03-10T20:49:39.540Z",
+    "lastModified": "2026-03-10T20:49:39.540Z",
+    "position": {
+     "x": 1095,
+     "y": -1095
+    },
+    "variables": {},
+    "expressions": [],
+    "kind": "answer",
+    "answerId": "14757751-3446-47b8-8657-c44ae0552494",
+    "questionId": "7a1a4cf7-c7ca-4c43-b232-9ff822eabfe0",
+    "nextNodeId": null,
+    "adviceIds": [],
+    "checklistItemIds": [],
+    "isEndPoint": false,
+    "score": null
+   },
+   {
+    "id": "89c2f05c-3ee4-41ba-be3b-efdba8e9f33e",
+    "topicId": "initial-topic-id",
+    "createdAt": "2026-03-10T20:49:39.540Z",
+    "lastModified": "2026-03-10T20:49:39.540Z",
+    "position": {
+     "x": 1380,
+     "y": -1095
+    },
+    "variables": {},
+    "expressions": [],
+    "kind": "answer",
+    "answerId": "f9dd6097-d4ad-4270-8a62-61d57279214b",
+    "questionId": "7a1a4cf7-c7ca-4c43-b232-9ff822eabfe0",
+    "nextNodeId": null,
+    "adviceIds": [
+     "62f5872c-73ad-4b5e-a655-3db353f97867"
+    ],
+    "checklistItemIds": [],
+    "isEndPoint": false,
+    "score": null
+   }
+  ]
+ },
+ "variables": {
+  "variables": [
+   {
+    "id": "d64787f5-b396-4d50-a1ec-30c96bb9d4a7",
+    "createdAt": "2026-08-17T12:52:44.282Z",
+    "lastModified": "2026-08-17T12:52:44.282Z",
+    "notes": "",
+    "code": "ASPECT_SCORE_SIGNALEN_KLACHTEN",
+    "type": "derived",
+    "subtopicId": "61cc6844-68c9-4a79-8a63-ab341aeb81d4"
+   }
+  ],
+  "error": null
+ },
+ "tags": {
+  "tags": [],
+  "error": null
+ },
+ "topics": {
+  "topicsEnabled": true,
+  "topics": [
+   {
+    "id": "initial-topic-id",
+    "title": {
+     "nl-NL": "Fabrikant",
+     "en-GB": "Manufacturer"
+    },
+    "description": {
+     "nl-NL": "U maakt zelf producten of laat producten onder uw naam produceren. U bent verantwoordelijk voor de veiligheid en kwaliteit van de producten die u op de markt brengt.",
+     "en-GB": "You manufacture products yourself or have products manufactured under your name. You are responsible for the safety and quality of the products you place on the market."
+    },
+    "startNodeId": "5e011073-ad18-4a5d-959b-736168b86ac2"
+   }
+  ]
+ },
+ "subtopics": {
+  "subtopicsEnabled": true,
+  "subtopics": [
+   {
+    "id": "61cc6844-68c9-4a79-8a63-ab341aeb81d4",
+    "topicId": "initial-topic-id",
+    "createdAt": "2026-08-17T12:52:44.282Z",
+    "lastModified": "2026-08-17T12:52:44.282Z",
+    "title": {
+     "nl-NL": "Signalen & klachten",
+     "en-GB": "Complaints & signals"
+    },
+    "description": {
+     "nl-NL": "<p>Klachten en andere signalen kunnen erop wijzen dat een product niet veilig is. Daarom is het belangrijk dat u deze signalen verzamelt, onderzoekt en waar nodig maatregelen neemt.</p>",
+     "en-GB": "<p>Complaints and other signals may indicate that a product is unsafe. It is therefore important to collect and investigate these signals and take action where necessary.</p>"
+    },
+    "kind": "subtopic"
+   }
+  ]
+ }
+}

@@ -34,7 +34,7 @@ var jobs = new ConcurrentDictionary<string, Job>();
 var languages = new Language[]
 {
     new("BG", "bg-BG", "Български"), new("CS", "cs-CZ", "Čeština"), new("DA", "da-DK", "Dansk"),
-    new("DE", "de-DE", "Deutsch"), new("EL", "el-GR", "Ελληνικά"), new("EN", "en-GB", "English"),
+    new("DE", "de-DE", "Deutsch"), new("EL", "el-GR", "Ελληνικά"), new("NL", "nl-NL", "Nederlands"),
     new("ES", "es-ES", "Español"), new("ET", "et-EE", "Eesti"), new("FI", "fi-FI", "Suomi"),
     new("FR", "fr-FR", "Français"), new("GA", "ga-IE", "Gaeilge"), new("HR", "hr-HR", "Hrvatski"),
     new("HU", "hu-HU", "Magyar"), new("IT", "it-IT", "Italiano"), new("LT", "lt-LT", "Lietuvių"),
@@ -209,7 +209,7 @@ app.MapPost("/api/translate", async (HttpRequest request) =>
                 filename = Path.GetFileNameWithoutExtension(file.FileName)
             }
         },
-        sourceLanguage = "EN",
+        sourceLanguage = "NL",
         targetLanguages = new[] { lang.Code },
         domain = "GEN",
         notifications = new

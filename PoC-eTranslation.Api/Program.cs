@@ -34,15 +34,15 @@ var jobs = new ConcurrentDictionary<string, Job>();
 var languages = new Language[]
 {
     new("BG", "bg-BG", "Български"), new("CS", "cs-CZ", "Čeština"), new("DA", "da-DK", "Dansk"),
-    new("DE", "de-DE", "Deutsch"), new("EL", "el-GR", "Ελληνικά"), new("EN", "en-GB", "English"),
+    new("DE", "de-DE", "Deutsch"), new("EL", "el-GR", "Ελληνικά"), new("NL", "nl-NL", "Nederlands"),
     new("ES", "es-ES", "Español"), new("ET", "et-EE", "Eesti"), new("FI", "fi-FI", "Suomi"),
     new("FR", "fr-FR", "Français"), new("GA", "ga-IE", "Gaeilge"), new("HR", "hr-HR", "Hrvatski"),
     new("HU", "hu-HU", "Magyar"), new("IT", "it-IT", "Italiano"), new("LT", "lt-LT", "Lietuvių"),
     new("LV", "lv-LV", "Latviešu"), new("MT", "mt-MT", "Malti"), new("PL", "pl-PL", "Polski"),
     new("PT", "pt-PT", "Português"), new("RO", "ro-RO", "Română"), new("SK", "sk-SK", "Slovenčina"),
     new("SL", "sl-SI", "Slovenščina"), new("SV", "sv-SE", "Svenska"), new("UK", "uk-UA", "Українська"),
-    new("ZH", "zh-CN", "中文")
-};
+    new("ZH", "zh-CN", "中文"), new("AR", "ar-SA", "العربية")
+}; 
 
 var options = string.Join("\n", languages.Select(l =>
     $"<option value=\"{l.Code}\" lang=\"{l.Code.ToLowerInvariant()}\">{WebUtility.HtmlEncode(l.Name)} ({l.Code})</option>"));
@@ -68,38 +68,64 @@ var page = """
 </head>
 <body>
 <h1>Beslisboom vertalen</h1>
+<label for="file">JSON-bestand</label>
+<input type="file" id="file" accept=".json", application/json>
 <label for="taal">Taal</label>
 <select id="taal">
 {{OPTIONS}}
 </select>
-<button id="start" type="button">Vertalen</button>
+<button id="start" type="button" disabled>Vertalen</button>
 <div id="status" role="status" aria-live="polite"></div>
 <script>
   const btn = document.getElementById('start');
   const sel = document.getElementById('taal');
   const out = document.getElementById('status');
+  const file = document.getElementById('file');
+  let translating = false;
+  const updateButton = () => {
+    btn.disabled = translating || file.files.length === 0;
+  };
+
+  file.addEventListener('change', updateButton);
+  updateButton();
 
   btn.addEventListener('click', async () => {
-    btn.disabled = true;
+    if (file.files.length === 0) {
+      out.textContent = 'Kies eerst een JSON-bestand.';
+      return;
+    }
+
+    translating = true;
+    updateButton();
     out.textContent = 'Aanvraag versturen...';
+
+    const formulier = new FormData();
+    formulier.append('language', sel.value);
+    formulier.append('file', file.files[0]);
+
     try {
       const r = await fetch('/api/translate', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ language: sel.value })
+        body: formulier
       });
       if (!r.ok) throw new Error(await r.text());
       const { id } = await r.json();
       poll(id);
     } catch (e) {
       out.textContent = 'Mislukt: ' + e.message;
-      btn.disabled = false;
+      translating = false;
+      updateButton();
     }
   });
 
   async function poll(id) {
     const r = await fetch('/api/status/' + id);
-    if (!r.ok) { out.textContent = 'Status niet gevonden. Start opnieuw.'; btn.disabled = false; return; }
+    if (!r.ok) {
+      out.textContent = 'Status niet gevonden. Start opnieuw.';
+      translating = false;
+      updateButton();
+      return;
+    }
     const s = await r.json();
     if (s.status === 'Klaar') {
       const a = document.createElement('a');
@@ -107,12 +133,14 @@ var page = """
       a.textContent = 'Download ' + s.fileName;
       out.textContent = 'Klaar. ';
       out.append(a);
-      btn.disabled = false;
+      translating = false;
+      updateButton();
       return;
     }
     if (s.status === 'Mislukt') {
       out.textContent = 'Mislukt: ' + (s.message || 'onbekende fout');
-      btn.disabled = false;
+      translating = false;
+      updateButton();
       return;
     }
     out.textContent = 'Bezig met vertalen... (' + s.status + ')';
@@ -129,15 +157,38 @@ app.MapGet("/", () => Results.Content(page, "text/html; charset=utf-8"));
 
 // --- Trigger: stuur het bestand naar eTranslation ---------------------------------------------
 
-app.MapPost("/api/translate", async (TranslateRequest body) =>
+app.MapPost("/api/translate", async (HttpRequest request) =>
 {
-    var lang = languages.FirstOrDefault(l => l.Code == body.Language);
-    if (lang is null) return Results.BadRequest("Onbekende taal.");
+    var form = await request.ReadFormAsync();
+    var languageCode = form["language"].ToString();
+    var file = form.Files.GetFile("file");
 
-    var inputFile = Req("Poc:InputFile");
+    var lang = languages.FirstOrDefault(l => l.Code == languageCode);
+    if (lang is null) return Results.BadRequest("Onbekende taal.");
+    if (file is null || file.Length == 0) return Results.BadRequest("Kies een bestand.");
+
+    byte[] bytes;
+    using (var ms = new MemoryStream())
+    {
+        await file.CopyToAsync(ms);
+        bytes = ms.ToArray();
+    }
+
+    JsonNode? original;
+    try
+    {
+        original = JsonNode.Parse(bytes);
+    }
+    catch (JsonException)
+    {
+        return Results.BadRequest("Het bestand is geen geldige JSON.");
+    }
+    if (original is null)
+        return Results.BadRequest("Het bestand is leeg.");
+
     var baseUrl = Req("Poc:PublicBaseUrl").TrimEnd('/');
 
-    var job = new Job { Id = Guid.NewGuid().ToString(), Code = lang.Code, Key = lang.Key, Status = "Versturen" };
+    var job = new Job { Id = Guid.NewGuid().ToString(), Code = lang.Code, Key = lang.Key, Status = "Versturen", Original = original };
     jobs[job.Id] = job;
 
     var payload = new
@@ -153,9 +204,9 @@ app.MapPost("/api/translate", async (TranslateRequest body) =>
         {
             document = new
             {
-                content = Convert.ToBase64String(await File.ReadAllBytesAsync(inputFile)),
+                content = Convert.ToBase64String(bytes),
                 format = cfg["Poc:DocumentFormat"] ?? "json",
-                filename = Path.GetFileNameWithoutExtension(inputFile)
+                filename = Path.GetFileNameWithoutExtension(file.FileName)
             }
         },
         sourceLanguage = "NL",
@@ -174,13 +225,13 @@ app.MapPost("/api/translate", async (TranslateRequest body) =>
         Credentials = new NetworkCredential(Req("ETranslation:Username"), Req("ETranslation:Password"))
     };
     using var http = new HttpClient(handler);
-    var request = new HttpRequestMessage(HttpMethod.Post,
+    var eTranslationRequest = new HttpRequestMessage(HttpMethod.Post,
         "https://language-tools.ec.europa.eu/etranslation/api/askTranslate")
     {
         Content = new StringContent(JsonSerializer.Serialize(payload), Encoding.UTF8, "application/json")
     };
 
-    var response = await http.SendAsync(request);
+    var response = await http.SendAsync(eTranslationRequest);
     var text = await response.Content.ReadAsStringAsync();
     Console.WriteLine($"askTranslate ({lang.Code}) -> {(int)response.StatusCode}: {text}");
 
@@ -288,7 +339,7 @@ app.MapPost("/callback/delivery", async (HttpRequest req) =>
     try
     {
         var translatedBytes = Convert.FromBase64String(doc.RootElement.GetProperty("result").GetString()!);
-        var original = JsonNode.Parse(await File.ReadAllTextAsync(Req("Poc:InputFile")))!;
+        var original = job.Original;
         var translated = JsonNode.Parse(Encoding.UTF8.GetString(translatedBytes))!;
         var merged = TranslationMerger.Merge(original, translated, "nl-NL", job.Key);
 
@@ -315,7 +366,6 @@ app.MapPost("/callback/delivery", async (HttpRequest req) =>
 app.Run();
 
 record Language(string Code, string Key, string Name);
-record TranslateRequest(string Language);
 
 class Job
 {
@@ -326,4 +376,5 @@ class Job
     public string Status { get; set; } = "";
     public string? Message { get; set; }
     public string? FilePath { get; set; }
+    public JsonNode? Original { get; set; }   // het geüploade bestand, voor het samenvoegen
 }
